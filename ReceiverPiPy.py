@@ -3,9 +3,10 @@ __author__ = 'Djamel'
 import wiringpi
 import datetime
 import sys
+import ReceiverPiPy as rp
 
 #def start_receiver(gpio):
-gpio = sys.argv[1]
+gpio = int(sys.argv[1])
 wiringpi.wiringPiSetup()
 wiringpi.pinMode(gpio, 0)
 
@@ -21,16 +22,16 @@ on = False
 recipient = 0
 
 #    while t < 9480 or t > 10350:
-#        t = pulse_in(gpio, 0, 1000000)
+#        t = rp.pulse_in(gpio, 0, 1000000)
 #        print "first step"
 
 while (t < 2600 and t > 2950):
-    t = pulse_in(gpio, 0, 1000000)
+    t = rp.pulse_in(gpio, 0, 1000000)
     print "second step"
 
 while i < 64:
     print "data !"
-    t = pulse_in(gpio, 0, 1000000)
+    t = rp.pulse_in(gpio, 0, 1000000)
     if t > 200 and t < 365:
         bit = 0
 
@@ -57,7 +58,7 @@ while i < 64:
     prev_bit = bit
     i += 1
 if i > 0:
-    printResult(sender, group, on, recipient)
+    rp.printResult(sender, group, on, recipient)
 
 
 def printResult(sender, group, on, recipient):
