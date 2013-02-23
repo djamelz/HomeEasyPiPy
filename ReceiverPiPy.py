@@ -3,8 +3,9 @@ __author__ = 'Djamel'
 import wiringpi
 import datetime
 
-def start_receiver(gpio):
+#def start_receiver(gpio):
 
+    wiringpi.wiringPiSetup()
     wiringpi.pinMode(gpio, 0)
 
     i = 0
@@ -18,11 +19,11 @@ def start_receiver(gpio):
     on = False
     recipient = 0
 
-    while t < 9480 or t > 10350:
-        t = pulse_in(gpio, 0, 1000000)
-        print "first step"
+#    while t < 9480 or t > 10350:
+#        t = pulse_in(gpio, 0, 1000000)
+#        print "first step"
 
-    while (t < 2550 or t > 2700):
+    while (t < 2600 and t > 2950):
         t = pulse_in(gpio, 0, 1000000)
         print "second step"
 
@@ -68,7 +69,7 @@ def printResult(sender, group, on, recipient):
 
 
 def pulse_in(gpio, state, timeout):
-    tn = 0
+    tn = datetime.datetime.now()
     t0 = datetime.datetime.now()
     micros = 0
 
