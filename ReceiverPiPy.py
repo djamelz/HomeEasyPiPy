@@ -3,62 +3,6 @@ __author__ = 'Djamel'
 import wiringpi
 import datetime
 import sys
-import ReceiverPiPy as rp
-
-#def start_receiver(gpio):
-gpio = int(sys.argv[1])
-wiringpi.wiringPiSetup()
-wiringpi.pinMode(gpio, 0)
-
-i = 0
-t = 0
-
-prev_bit = 0
-bit = 0
-
-sender = 0
-group = False
-on = False
-recipient = 0
-
-#    while t < 9480 or t > 10350:
-#        t = rp.pulse_in(gpio, 0, 1000000)
-#        print "first step"
-
-while (t < 2600 and t > 2950):
-    t = rp.pulse_in(gpio, 0, 1000000)
-    print "second step"
-
-while i < 64:
-    print "data !"
-    t = rp.pulse_in(gpio, 0, 1000000)
-    if t > 200 and t < 365:
-        bit = 0
-
-    elif t > 1000 and t < 1360:
-        bit = 1
-    else:
-        i = 0
-        break
-
-    if i % 2 == 1:
-        if (prev_bit ^ bit) == 0:
-            i = 0
-            break
-        if i < 53:
-            sender <<= 1
-            sender |= prev_bit
-        elif i == 53:
-            group = prev_bit
-        elif i == 55:
-            on = prev_bit
-        else:
-            recipient <<= 1
-            recipient |= prev_bit
-    prev_bit = bit
-    i += 1
-if i > 0:
-    rp.printResult(sender, group, on, recipient)
 
 
 def printResult(sender, group, on, recipient):
@@ -104,3 +48,61 @@ def pulse_in(gpio, state, timeout):
     micros = micros + (tn.microsecond - t1.microsecond)
 
     return micros
+
+#def start_receiver(gpio):
+gpio = int(sys.argv[1])
+wiringpi.wiringPiSetup()
+wiringpi.pinMode(gpio, 0)
+
+i = 0
+t = 0
+
+prev_bit = 0
+bit = 0
+
+sender = 0
+group = False
+on = False
+recipient = 0
+
+#    while t < 9480 or t > 10350:
+#        t = rp.pulse_in(gpio, 0, 1000000)
+#        print "first step"
+
+while (t < 2600 and t > 2950):
+    t = pulse_in(gpio, 0, 1000000)
+    print "second step"
+
+while i < 64:
+    print "data !"
+    t = pulse_in(gpio, 0, 1000000)
+    if t > 200 and t < 365:
+        bit = 0
+
+    elif t > 1000 and t < 1360:
+        bit = 1
+    else:
+        i = 0
+        break
+
+    if i % 2 == 1:
+        if (prev_bit ^ bit) == 0:
+            i = 0
+            break
+        if i < 53:
+            sender <<= 1
+            sender |= prev_bit
+        elif i == 53:
+            group = prev_bit
+        elif i == 55:
+            on = prev_bit
+        else:
+            recipient <<= 1
+            recipient |= prev_bit
+    prev_bit = bit
+    i += 1
+if i > 0:
+    printResult(sender, group, on, recipient)
+
+
+
