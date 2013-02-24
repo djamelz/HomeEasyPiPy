@@ -69,40 +69,39 @@ recipient = 0
 #        t = rp.pulse_in(gpio, 0, 1000000)
 #        print "first step"
 
-while (t < 2600 and t > 2950):
-    t = pulse_in(gpio, 0, 1000000)
+while True:
+    while (t < 2700 and t > 2950):
+        t = pulse_in(gpio, 0, 1000000)
+
     print "second step"
 
-while i < 64:
-    print "data !"
-    t = pulse_in(gpio, 0, 1000000)
-    if t > 200 and t < 365:
-        bit = 0
+    while i < 64:
+        print "data !"
+        t = pulse_in(gpio, 0, 1000000)
+        if t > 200 and t < 365:
+            bit = 0
 
-    elif t > 1000 and t < 1360:
-        bit = 1
-    else:
-        i = 0
-        break
-
-    if i % 2 == 1:
-        if (prev_bit ^ bit) == 0:
+        elif t > 1000 and t < 1360:
+            bit = 1
+        else:
             i = 0
             break
-        if i < 53:
-            sender <<= 1
-            sender |= prev_bit
-        elif i == 53:
-            group = prev_bit
-        elif i == 55:
-            on = prev_bit
-        else:
-            recipient <<= 1
-            recipient |= prev_bit
-    prev_bit = bit
-    i += 1
-if i > 0:
-    printResult(sender, group, on, recipient)
 
-
-
+        if i % 2 == 1:
+            if (prev_bit ^ bit) == 0:
+                i = 0
+                break
+            if i < 53:
+                sender <<= 1
+                sender |= prev_bit
+            elif i == 53:
+                group = prev_bit
+            elif i == 55:
+                on = prev_bit
+            else:
+                recipient <<= 1
+                recipient |= prev_bit
+        prev_bit = bit
+        i += 1
+    if i > 0:
+        printResult(sender, group, on, recipient)
