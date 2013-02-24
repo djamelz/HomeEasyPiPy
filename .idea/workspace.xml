@@ -7,7 +7,7 @@
     <list default="true" id="ff4e6aed-29a0-4e21-86e0-e6f4b082ac5a" name="Default" comment="" />
     <ignored path="HomeEasyPiPy.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/ReceiverPiPy.py" changelist="ff4e6aed-29a0-4e21-86e0-e6f4b082ac5a" time="1361664234286" ignored="false" />
+    <file path="/ReceiverPiPy.py" changelist="ff4e6aed-29a0-4e21-86e0-e6f4b082ac5a" time="1361714017687" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,9 +27,9 @@
       <file leaf-file-name="ReceiverPiPy.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ReceiverPiPy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="49" selection-start="2278" selection-end="2278" vertical-scroll-proportion="0.96602494">
+            <state line="80" column="31" selection-start="1636" selection-end="1636" vertical-scroll-proportion="0.69422424">
               <folding>
-                <element signature="e#23#38#0" expanded="true" />
+                <element signature="e#23#44#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -50,8 +50,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2400" />
-    <option name="width" value="960" />
+    <option name="x" value="2698" />
+    <option name="width" value="662" />
     <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -175,7 +175,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2400" y="0" width="960" height="1080" extended-state="0" />
+    <frame x="2698" y="0" width="662" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -255,9 +255,9 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ReceiverPiPy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="49" selection-start="2278" selection-end="2278" vertical-scroll-proportion="0.96602494">
+        <state line="80" column="31" selection-start="1636" selection-end="1636" vertical-scroll-proportion="0.69422424">
           <folding>
-            <element signature="e#23#38#0" expanded="true" />
+            <element signature="e#23#44#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,6 +1,6 @@
 __author__ = 'Djamel'
 
-import wiringpi
+import wiringpi as wp
 import datetime
 import sys
 
@@ -19,7 +19,7 @@ def pulse_in(gpio, state, timeout):
     t0 = datetime.datetime.now()
     micros = 0
 
-    while wiringpi.digitalRead(gpio) != state:
+    while wp.digitalRead(gpio) != state:
         tn = datetime.datetime.now()
         if tn.second > t0.second:
             micros = 1000000L
@@ -31,7 +31,7 @@ def pulse_in(gpio, state, timeout):
 
     t1 = datetime.datetime.now()
 
-    while wiringpi.digitalRead(gpio) == state:
+    while wp.digitalRead(gpio) == state:
         tn = datetime.datetime.now()
         if tn.second > t0.second:
             micros = 1000000L
@@ -51,8 +51,8 @@ def pulse_in(gpio, state, timeout):
 
 #def start_receiver(gpio):
 gpio = int(sys.argv[1])
-wiringpi.wiringPiSetup()
-wiringpi.pinMode(gpio, 0)
+wp.wiringPiSetup()
+wp.pinMode(gpio, 0)
 
 i = 0
 t = 0
@@ -65,19 +65,19 @@ group = False
 on = False
 recipient = 0
 
-#    while t < 9480 or t > 10350:
-#        t = rp.pulse_in(gpio, 0, 1000000)
-#        print "first step"
-
 while True:
-    while (t < 2700 and t > 2950):
-        t = pulse_in(gpio, 0, 1000000)
+    while t < 250 or t > 300:
+        t = pulse_in(gpio, wp.HIGH, 1000000)
+    print "first step"
+
+    while t < 2650 and t > 2750:
+        t = pulse_in(gpio, wp.LOW, 1000000)
 
     print "second step"
 
     while i < 64:
         print "data !"
-        t = pulse_in(gpio, 0, 1000000)
+        t = pulse_in(gpio, wp.LOW, 1000000)
         if t > 200 and t < 365:
             bit = 0
 
@@ -105,3 +105,4 @@ while True:
         i += 1
     if i > 0:
         printResult(sender, group, on, recipient)
+        break
