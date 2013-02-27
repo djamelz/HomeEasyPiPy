@@ -66,11 +66,11 @@ on = False
 recipient = 0
 
 while True:
-    while t < 250 or t > 300:
-        t = pulse_in(gpio, wp.HIGH, 1000000)
+    while t < 9480 or t > 10350:
+        t = pulse_in(gpio, wp.LOW, 1000000)
     print "first step"
 
-    while t < 2650 and t > 2750:
+    while t < 2550 and t > 2750:
         t = pulse_in(gpio, wp.LOW, 1000000)
 
     print "second step"
@@ -88,7 +88,7 @@ while True:
             break
 
         if i % 2 == 1:
-            if (prev_bit ^ bit) == 0:
+            if (prev_bit ^ bit) ==  0:
                 i = 0
                 break
             if i < 53:
